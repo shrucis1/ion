@@ -70,6 +70,16 @@
                 document.getElementById("AD_MESG").style.display = "block";
             }
         }
+        $(document).ready(function() {
+            if(window.canRunAds !== undefined) {
+                setTimeout(function() {
+                    $('body').toggleClass("pulse")
+                }, 500);
+                setTimeout(function() {
+                    $('body').toggleClass("pulse")
+                }, 2000);
+            }
+        });
         </script>
     {% endblock %}
 
