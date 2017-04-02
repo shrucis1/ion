@@ -1,0 +1,15 @@
+#AD_MESG {
+    display: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: #D30000;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 0px 0px 3px 3px;
+    position: relative;
+    top: -15px;
+    left: -25px;
+    width: 100vw;
+    z-index: 999;
+}

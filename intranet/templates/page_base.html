@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:100italic,400italic,700italic,100,400,700" />
 
         {% stylesheet 'base' %}
+        <link href="{% static 'css/aprilfools2017.css' %}" rel="stylesheet" type="text/css">
 
         {% if debug %}
             <style type="text/css">
@@ -34,6 +35,9 @@
         <script type="text/javascript" src="{% static 'js/vendor/jquery.cookie.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/modernizr.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ads.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/adframe.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/showads.js' %}"></script>
         <script type="text/javascript">
             Modernizr.load({
                 test: Modernizr.borderradius,
@@ -60,6 +64,13 @@
         {% if theme.js %}
             <script type="text/javascript" src="{% static theme.js %}"></script>
         {% endif %}
+        <script>
+        window.onload = function(){
+            if(window.canRunAds < 3 || window.canRunAds === undefined){
+                document.getElementById("AD_MESG").style.display = "block";
+            }
+        }
+        </script>
     {% endblock %}
 
     {% block head %}
@@ -69,6 +80,11 @@
 </head>
 <body class="notransition{% block bodyclass %}{% endblock %}"{% block bodytag %}{% endblock %}>
     {% if global_warning %}<div class="global-warning">{{ global_warning }}</div>{% endif %}
+    <div id="AD_MESG">
+	We depend on revenue from advertisements to keep Ion running for users like you. <br>
+	Without them, we couldn't remain free and accesible to everyone. <br>
+	If you depend on Ion, please consider supporting us by disabling your ad blocker.
+    </div>
     {% block body %}
     {% endblock %}
 
