@@ -37,6 +37,15 @@
     {% if is_senior %}
         <script type="text/javascript" src="{% static 'js/dashboard/seniors.js' %}"></script>
     {% endif %}
+    <script>
+    $(document).ready(function() {
+        var a = 0;
+        setInterval(function() {
+            $(".widget-ad center").hide().eq(a).show();
+            a = (a + 1) % 3;
+        }, 5000);
+    });
+    </script>
 {% endblock %}
 
 {% block main %}
@@ -59,6 +68,17 @@
 
     <button class="widget extra-widgets-show">Show more widgets</button>
     {% include "dashboard/birthdays.html" %}
+
+    <div class="widget widget-ad">
+        <div class="widget-title">
+            <h2>Advertisement</h2>
+        </div>
+        <div class="widget-content">
+            <center style="display:none"><a href="https://github.com/tjcsl/ion" target="_blank"><img src="{% static 'img/aprilfools/ad1.png' %}" /></a></center>
+            <center style="display:none"><a href="https://director.tjhsst.edu/" target="_blank"><img src="{% static 'img/aprilfools/ad2.png' %}" /></a></center>
+            <center><a href="/printing" target="_blank"><img src="{% static 'img/aprilfools/ad3.png' %}" /></a></center>
+        </div>
+    </div>
 
     {% if show_admin_widget %}
         {% include "dashboard/admin.html" %}
