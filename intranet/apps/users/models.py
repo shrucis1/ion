@@ -23,6 +23,7 @@ import ldap3.utils.dn
 from ldap3.core.exceptions import LDAPInvalidDNSyntaxResult, LDAPNoSuchObjectResult
 
 from ..groups.models import Group
+from ..bus.models import Route
 
 logger = logging.getLogger(__name__)
 
@@ -231,6 +232,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     receive_eighth_emails = models.BooleanField(default=False)
 
     receive_schedule_notifications = models.BooleanField(default=False)
+
+    # Bus information
+    bus_route = models.ForeignKey(Route, on_delete=models.SET_NULL, null=True)
 
     # LDAP values cached to the db are stored in the UserCache class
     cache = models.OneToOneField('UserCache', related_name="user", blank=True, null=True, on_delete=models.SET_NULL)

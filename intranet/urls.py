@@ -37,6 +37,7 @@ urlpatterns = [
     url(r"^printing", include("intranet.apps.printing.urls")),
     url(r"^ionldap", include("intranet.apps.ionldap.urls")),
     url(r"^board", include("intranet.apps.board.urls")),
+    url(r"^bus", include("intranet.apps.bus.urls")),
     url(r"^itemreg", include("intranet.apps.itemreg.urls")),
     url(r"^lostfound", include("intranet.apps.lostfound.urls")),
     url(r"^emailfwd", include("intranet.apps.emailfwd.urls")),
