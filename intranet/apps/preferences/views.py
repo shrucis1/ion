@@ -7,8 +7,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import (BusRouteForm, NotificationOptionsForm, PreferredPictureForm, PrivacyOptionsForm, PhoneFormset, EmailFormset, WebsiteFormset)
+<<<<<<< HEAD
 from ..bus.models import Route
+=======
+>>>>>>> Add Bus to User Preferences
 from ..users.models import User, Email
+from ..bus.models import Route
 
 logger = logging.getLogger(__name__)
 
@@ -204,7 +208,11 @@ def get_bus_route(user):
     """Get a user's bus route to pass as an initial value to a
     BusRouteForm."""
 
+<<<<<<< HEAD
     return {'bus_route': user.bus_route.route_name if user.bus_route else None}
+=======
+    return {'bus_route': user.bus_route.route_name}
+>>>>>>> Add Bus to User Preferences
 
 def save_bus_route(request, user):
     bus_route = get_bus_route(user)
@@ -309,7 +317,15 @@ def preferences_view(request):
         "preferred_pic_form": preferred_pic_form,
         "privacy_options_form": privacy_options_form,
         "notification_options_form": notification_options_form,
+<<<<<<< HEAD
         "bus_route_form": bus_route_form,
+=======
+<<<<<<< HEAD
+=======
+        "bus_route_form": bus_route_form,
+        "ldap_error": ldap_error
+>>>>>>> Add Bus to User Preferences
+>>>>>>> Add Bus to User Preferences
     }
     return render(request, "preferences/preferences.html", context)
 
