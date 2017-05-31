@@ -6,6 +6,7 @@ from django import forms
 from .fields import PhoneField
 
 from ..users.models import Grade
+from ..bus.models import Route
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +32,14 @@ class PersonalInformationForm(forms.Form):
     mobile_phone = PhoneField(required=False, label="Mobile phone")
     home_phone = PhoneField(required=False, label="Home phone")
 
+class BusRouteForm(forms.Form):
+    def __init__(self, user, *args, **kwargs):
+        super(BusRouteForm, self).__init__(*args, **kwargs)
+        self.BUS_ROUTE_CHOICES = [(None, "Set bus route...")]
+        routes = Route.objects.all()
+        for route in routes:
+            self.BUS_ROUTE_CHOICES += [(route.route_name, route.route_name)]
+        self.fields['bus_route'] = forms.ChoiceField(choices=self.BUS_ROUTE_CHOICES, widget=forms.Select)
 
 class PreferredPictureForm(forms.Form):
 

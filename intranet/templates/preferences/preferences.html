@@ -16,6 +16,7 @@
 
 {% block js %}
     {{ block.super }}
+    <script type="text/javascript" src="{% static 'vendor/selectize.js-0.12.4/dist/js/standalone/selectize.min.js' %}"></script>
     <script type="text/javascript">
     add_field = function(btn) {
         var tr = $(btn).parent().parent();
@@ -159,6 +160,11 @@
             </table>
 
             <br>
+            {% if bus_route_form %}
+                <h3>Bus Route (PM)</h3>
+                    {{ bus_route_form.as_table }}
+                <br>
+            {% endif %}
 
             {% if preferred_pic_form %}
                 <h3>Preferred Picture</h3>
