@@ -499,6 +499,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "maintenancemode",
     "pipeline",
+    "channels",
     # Intranet apps
     "intranet.apps",
     "intranet.apps.announcements",
