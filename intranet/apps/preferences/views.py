@@ -10,10 +10,10 @@ from django.shortcuts import render
 from .forms import (BusRouteForm, NotificationOptionsForm, PersonalInformationForm, PreferredPictureForm, PrivacyOptionsForm)
 from ..bus.models import Route
 from ..users.models import User
-from ...db.ldap_db import LDAPConnection
 
 logger = logging.getLogger(__name__)
 
+# TODO[LDAP]: after figuring out permissions and fields, change this
 
 def get_personal_info(user):
     """Get a user's personal info attributes to pass as an initial value to a
