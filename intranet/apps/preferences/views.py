@@ -89,7 +89,7 @@ def save_preferred_pic(request, user):
                     logger.debug("{}: same ({})".format("preferred_photo", new_preferred_pic))
                 else:
                     logger.debug("{}: new: {} from: {}".format("preferred_photo",
-                                 new_preferred_pic, old_preferred_pic if "preferred_photo" in preferred_pic else None))
+                                                               new_preferred_pic, old_preferred_pic if "preferred_photo" in preferred_pic else None))
                     try:
                         user.preferred_photo = user.photos.filter(grade_number=new_preferred_pic)
                     except Exception as e:
@@ -97,7 +97,7 @@ def save_preferred_pic(request, user):
                         logger.debug("Unable to set field {} with value {}: {}".format("preferred_pic", new_preferred_pic, e))
                     else:
                         messages.success(request, "Set field {} to {}".format("preferred_pic",
-                                         new_preferred_pic if not isinstance(new_preferred_pic, list) else
+                                                                              new_preferred_pic if not isinstance(new_preferred_pic, list) else
                                                                               ", ".join(new_preferred_pic)))
     return preferred_pic_form
 
@@ -143,9 +143,9 @@ def save_privacy_options(request, user):
                             field_name = field
                             field_type = "parent"
                         if field_type == "self":
-                            success = user.set_permission(field_name, fields[field], admin=user.is_eighth_admin)
-                        elif user.is_eighth_admin:
-                            success = user.set_permission(field_name, fields[field], parent=True)
+                            success = user.properties.set_permission(field_name, fields[field], admin=request.user.is_eighth_admin)
+                        elif request.user.is_eighth_admin:
+                            success = user.properties.set_permission(field_name, fields[field], parent=True, admin=True)
                         else:
                             raise Exception("You do not have permission to change this parent field.")
                         if not success:
