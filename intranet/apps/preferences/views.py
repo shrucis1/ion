@@ -310,19 +310,7 @@ def preferences_view(request):
         "preferred_pic_form": preferred_pic_form,
         "privacy_options_form": privacy_options_form,
         "notification_options_form": notification_options_form,
-<<<<<<< HEAD
-<<<<<<< HEAD
         "bus_route_form": bus_route_form,
-=======
-<<<<<<< HEAD
-=======
-        "bus_route_form": bus_route_form,
-        "ldap_error": ldap_error
->>>>>>> Add Bus to User Preferences
->>>>>>> Add Bus to User Preferences
-=======
-        "bus_route_form": bus_route_form,
->>>>>>> Make Bus Changes
     }
     return render(request, "preferences/preferences.html", context)
 
